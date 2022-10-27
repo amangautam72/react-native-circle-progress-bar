@@ -38,10 +38,22 @@ const CircularProgress = ({value}: {value: number}) => {
   const width = useSharedValue(120);
   const scale = useSharedValue(0.6);
 
-  useEffect(() => {
+  const reset = () => {
     height.value = 120;
     width.value = 120;
     scale.value = 0.6;
+  };
+
+  const animate = () => {
+    height.value = withSpring(150, {damping: 10});
+    width.value = withSpring(150, {damping: 10});
+    scale.value = withSpring(1, {damping: 8});
+
+    progress.value = withTiming(value, {duration: 3500});
+  };
+
+  useEffect(() => {
+    reset();
 
     const unsubscribe = setInterval(() => {
       setState(progress.value);
@@ -50,11 +62,7 @@ const CircularProgress = ({value}: {value: number}) => {
       }
     }, 0);
 
-    height.value = withSpring(150, {damping: 10});
-    width.value = withSpring(150, {damping: 10});
-    scale.value = withSpring(1, {damping: 8});
-
-    progress.value = withTiming(value, {duration: 3500});
+    animate();
 
     return () => clearInterval(unsubscribe);
   }, [value]);
@@ -118,10 +126,10 @@ const CircularProgress = ({value}: {value: number}) => {
     <View style={styles.mainContainer}>
       <View style={styles.progressWheel}></View>
       <Animated.View
-        style={[styles.progressOverlayRight, progressStyle]}></Animated.View>
+        style={[styles.progressOverlayFirst, progressStyle]}></Animated.View>
       <Animated.View
         style={[
-          styles.progressOverlayLeft,
+          styles.progressOverlaySecond,
           progressSecondStyle,
         ]}></Animated.View>
 
@@ -198,7 +206,7 @@ const styles = StyleSheet.create({
     borderRadius: 75,
     position: 'absolute',
   },
-  progressOverlayRight: {
+  progressOverlayFirst: {
     height: 220,
     width: 220,
     justifyContent: 'center',
@@ -213,7 +221,7 @@ const styles = StyleSheet.create({
     shadowColor: '#E6953E',
     shadowRadius: 10,
   },
-  progressOverlayLeft: {
+  progressOverlaySecond: {
     height: 220,
     width: 220,
     justifyContent: 'center',

@@ -10,18 +10,30 @@
 
 import React, {useEffect, useState, type PropsWithChildren} from 'react';
 import {
+  Image,
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
+  TextInput,
   useColorScheme,
   View,
 } from 'react-native';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  withRepeat,
+  withSpring,
+  interpolate,
+  Extrapolate,
+} from 'react-native-reanimated';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import CircularProgress from './CircularProgress';
+import SearchAnimation from './SearchAnimation';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -33,7 +45,7 @@ const App = () => {
         backgroundColor={styles.backgroundStyle.backgroundColor}
       />
 
-      <CircularProgress value={60} />
+      <CircularProgress value={80} />
     </SafeAreaView>
   );
 };
