@@ -1,6 +1,10 @@
-Thanks for landing here, I am glad that you took out some time to check this out. It takes time and effort to create these projects, If you really like my work and want me to keep making such projects, you can consider buying me a coffee. Thank you again!
+Thanks for landing here, I am glad that you took out some time to check this out. It takes time and effort to create these projects, If you really like my work and want me to keep making such projects, you can consider buying me a coffee or become a Patron. Thank you again!
 
+Buy me a coffee:
 https://www.buymeacoffee.com/amangautam72
+
+Become a Patreon:
+https://www.patreon.com/amangautam72
 
 # react-native-circle-progress-bar
 A beautiful circular progress bar made using views and react-native-reanimated.
